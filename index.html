@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiniPay UPI Demo</title>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage" class="page active">
+    <h2>MiniPay</h2>
+    <input type="text" id="username" placeholder="Enter Your Name">
+    <button onclick="login()">Continue</button>
+</div>
+
+<!-- HOME -->
+<div id="homePage" class="page">
+    <h3>Send Money</h3>
+
+    <button onclick="startScanner()">Scan QR</button>
+
+    <div id="reader"></div>
+
+    <input type="text" id="receiver" placeholder="Receiver Name">
+    <input type="number" id="amount" placeholder="Amount">
+    <button onclick="goToPin()">Proceed</button>
+</div>
+
+<!-- PIN -->
+<div id="pinPage" class="page">
+    <h3>Enter UPI PIN</h3>
+    <input type="password" id="pin" maxlength="4" placeholder="****">
+    <button onclick="verifyPin()">Pay</button>
+</div>
+
+<!-- LOADING -->
+<div id="loadingPage" class="page">
+    <div class="loader"></div>
+    <p>Processing Payment...</p>
+</div>
+
+<!-- RECEIPT -->
+<div id="receiptPage" class="page">
+    <div class="successCard">
+        <div class="successCircle">
+            <div class="checkmark"></div>
+        </div>
+        <h2>Payment Successful</h2>
+        <p class="amount">₹ <span id="rAmount"></span></p>
+        <p>Paid to <span id="rReceiver"></span></p>
+        <p>Bank: HDFC Bank •••• 4582</p>
+        <p>UPI Ref: <span id="rTxn"></span></p>
+        <p id="rTime"></p>
+        <button onclick="shareReceipt()">Share</button>
+        <button onclick="resetApp()">Done</button>
+    </div>
+</div>
+
+<!-- RECEIVER SCREEN -->
+<div id="receiverPage" class="page">
+    <div class="receiveCard">
+        <h2>Amount Received</h2>
+        <p class="amount">₹ <span id="recvAmount"></span></p>
+        <p>From <span id="recvSender"></span></p>
+        <p id="recvTime"></p>
+        <button onclick="resetApp()">Back</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
