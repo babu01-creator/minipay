@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MiniPay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- QR Library -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body>
+
+<!-- 🔐 LOGIN PAGE -->
+<div id="loginPage" class="center">
+    <div class="card">
+        <h2>MiniPay Login</h2>
+        <input type="text" id="username" placeholder="Enter Name">
+        <button onclick="login()">Login</button>
+    </div>
+</div>
+
+<!-- 🏠 MAIN APP -->
+<div id="appPage" style="display:none;">
+    <div class="app">
+
+        <div class="header">
+            <h2>MiniPay</h2>
+            <p>Welcome, <span id="userDisplay"></span></p>
+            <p class="balance">₹ <span id="balance">50000</span></p>
+        </div>
+
+        <div class="card">
+            <h3>Send Money</h3>
+            <input type="text" id="receiver" placeholder="Receiver Name / UPI">
+            <input type="number" id="amount" placeholder="Enter Amount">
+            <button onclick="payNow()">Pay</button>
+            <button onclick="openQR()">Scan QR</button>
+        </div>
+
+        <div class="card">
+            <h3>Recent Transactions</h3>
+            <ul id="history"></ul>
+        </div>
+
+        <div class="card">
+            <h3>Receiver Screen 📲</h3>
+            <p id="receiveMsg">No Payments Yet</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- 📷 QR PAGE -->
+<div id="qrPage" style="display:none;" class="center">
+    <div class="card">
+        <h3>Scan QR Code</h3>
+        <div id="reader" style="width:250px;"></div>
+        <button onclick="backHome()">Back</button>
+    </div>
+</div>
+
+<!-- 🔐 PIN PAGE -->
+<div id="pinPage" style="display:none;" class="center">
+    <div class="card">
+        <h3>Enter UPI PIN</h3>
+        <input type="password" id="upiPin" placeholder="4-digit PIN">
+        <button onclick="verifyPin()">Confirm</button>
+    </div>
+</div>
+
+<!-- 🧾 RECEIPT PAGE -->
+<div id="receiptPage" style="display:none;" class="center">
+    <div class="card">
+        <div id="receiptDetails"></div>
+        <button onclick="backHome()">Done</button>
+    </div>
+</div>
+
+<!-- 🔊 SOUND -->
+<audio id="successSound">
+    <source src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" type="audio/ogg">
+</audio>
+
+<!-- 📱 Bottom Nav -->
+<div class="bottomNav">
+    <div>🏠<br>Home</div>
+    <div>💳<br>Pay</div>
+    <div>📜<br>History</div>
+    <div>👤<br>Profile</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
